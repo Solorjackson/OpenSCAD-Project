@@ -1,6 +1,6 @@
 $fn=100;
 #translate([150,0,0])
-rotate([90,270,90])
+rotate([90,0,90])
 import("/Users/rockyjackson/Documents/OpenSCAD/GitHub/OpenSCAD-Project/iPhone_XR_Flexible_Case.stl");
 
 wdth=67.72;
@@ -10,8 +10,8 @@ rds=18.41;
 
 
 //using minkowski
-translate([0,1,5.5])
-rotate([90,0,0])
+translate([0,1,0])
+//rotate([0,90,0])
 //resize([78,13,152.91])
 difference(){
 minkowski(){
@@ -21,23 +21,23 @@ minkowski(){
 }
 //volume and power button holes
    rotate([90,0,0])
-   translate([-90,21,-2])
+   translate([-90,21,-3])
 minkowski(){
-    cube([150,23,8]);
+    cube([150,23,10]);
     sphere(2);
 }
 //silence mode button hole
    rotate([90,0,0])
-   translate([40,50,-2])
+   translate([40,50,-3])
 minkowski(){
-    cube([15,7,8]);
+    cube([15,7,10]);
     sphere(2);
 }
 //speaker and charger holes
    rotate([0,90,90])
-   translate([0,-32.5,-4])
+   translate([0,-32.5,-5])
 minkowski(){
-    cube([90,65,6]);
+    cube([90,65,8]);
     sphere(2);
 }
 //cutting side walls
@@ -57,18 +57,17 @@ translate([-35,-73,3.6])
 cube([70,40,10]);
 
 //cutting corners
-//#cylinder(15, 8, 8);
-
+minkowski(){
+    cube([20,20,20]);
+rotate([90,0,0])
+translate([18,-63,-1.5])
+cylinder(15, 11, 9);
+}
 //camera hole
     rotate([90,0,0])
     translate([-33.48,62,0])
     cylinder(100,7,9, center = true);
-    
-//cutting top and bottom
-rotate([0,0,0])
-translate([-100,12,-100])
-cube(200);
-    translate([0,0,0])
+    translate([0,10,0])
 minkowski(){
     cube([65.72,10.32,117.09], center = true);
     translate([0,0,0])
